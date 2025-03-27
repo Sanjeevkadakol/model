@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoGuard - AI-Powered Environmental Monitoring</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>EcoGuard</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#detection">Detection</a></li>
+                <li><a href="#analysis">Analysis</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>AI-Powered Environmental Monitoring</h1>
+            <p>Real-time detection and analysis of deforestation and environmental changes</p>
+        </div>
+    </section>
+
+    <!-- Detection Section -->
+    <section id="detection" class="detection-section">
+        <div class="section-header">
+            <h2>Deforestation Detection</h2>
+            <p>Real-time monitoring and analysis of forest areas</p>
+        </div>
+        
+        <div class="detection-container">
+            <!-- Map Container -->
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-overlay loading-overlay" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Analyzing selected area...</p>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <h3>Detection Settings</h3>
+                
+                <!-- Detection Mode -->
+                <div class="control-group">
+                    <label for="detectionMode">Detection Mode</label>
+                    <select id="detectionMode" class="control-select">
+                        <option value="deforestation">Deforestation</option>
+                        <option value="water">Water Bodies</option>
+                    </select>
+                </div>
+
+                <!-- Sensitivity Control -->
+                <div class="control-group">
+                    <label for="sensitivitySlider">Detection Sensitivity</label>
+                    <input type="range" id="sensitivitySlider" class="sensitivity-slider" 
+                           min="0" max="1" step="0.1" value="0.7">
+                    <div class="sensitivity-labels">
+                        <span>Low</span>
+                        <span>High</span>
+                    </div>
+                </div>
+
+                <!-- Time Range -->
+                <div class="control-group">
+                    <label for="timeRange">Time Range</label>
+                    <select id="timeRange" class="control-select">
+                        <option value="Last Month">Last Month</option>
+                        <option value="Last 3 Months">Last 3 Months</option>
+                        <option value="Last 6 Months">Last 6 Months</option>
+                        <option value="Last Year">Last Year</option>
+                    </select>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="control-actions">
+                    <button id="selectAreaBtn" class="primary-button">
+                        <i class="fas fa-draw-polygon"></i>
+                        Select Area
+                    </button>
+                    <button id="clearBtn" class="secondary-button">
+                        <i class="fas fa-trash"></i>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="results-panel">
+            <h3>Detection Results</h3>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h4>Total Sites</h4>
+                    <span id="totalSites" class="result-value">0</span>
+                </div>
+                <div class="result-card high-risk">
+                    <h4>High Risk</h4>
+                    <span id="highRisk" class="result-value">0</span>
+                </div>
+                <div class="result-card medium-risk">
+                    <h4>Medium Risk</h4>
+                    <span id="mediumRisk" class="result-value">0</span>
+                </div>
+                <div class="result-card low-risk">
+                    <h4>Low Risk</h4>
+                    <span id="lowRisk" class="result-value">0</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section id="analysis" class="analysis-section">
+        <div class="section-header">
+            <h2>Environmental Analysis</h2>
+            <p>Detailed analysis and trends of environmental changes</p>
+        </div>
+        <div class="charts-container">
+            <div class="chart-card">
+                <h3>Deforestation Trend</h3>
+                <canvas id="trendChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Risk Distribution</h3>
+                <canvas id="riskChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <h2>About EcoGuard</h2>
+            <p>Protecting our environment through advanced technology</p>
+        </div>
+        <div class="about-content">
+            <div class="feature-card">
+                <i class="fas fa-satellite"></i>
+                <h3>Satellite Monitoring</h3>
+                <p>Real-time satellite imagery analysis for environmental monitoring</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-brain"></i>
+                <h3>AI-Powered</h3>
+                <p>Advanced machine learning algorithms for accurate detection</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Trend Analysis</h3>
+                <p>Historical data analysis and future predictions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EcoGuard</h3>
+                <p>Protecting our environment through technology</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#detection">Detection</a></li>
+                    <li><a href="#analysis">Analysis</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@ecoguard.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EcoGuard. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html> 
