@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Deforestation Detection & Biodiversity Risk Mapping</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-tree"></i>
+            <span>EcoGuard</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#detection">Detection</a></li>
+            <li><a href="#mapping">Mapping</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>AI-Powered Deforestation Detection</h1>
+            <p>Protecting our forests through advanced technology and real-time monitoring</p>
+            <button class="cta-button">Start Detection</button>
+        </div>
+    </section>
+
+    <section id="detection" class="detection-section">
+        <h2>Deforestation Detection</h2>
+        <div class="detection-container">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            <div class="detection-controls">
+                <div class="control-panel">
+                    <h3>Detection Controls</h3>
+                    <div class="control-group">
+                        <label>Time Range:</label>
+                        <select id="timeRange">
+                            <option value="1">Last 24 Hours</option>
+                            <option value="7">Last 7 Days</option>
+                            <option value="30">Last 30 Days</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Detection Sensitivity:</label>
+                        <input type="range" id="sensitivity" min="1" max="10" value="5">
+                    </div>
+                    <button class="detect-button">Run Detection</button>
+                </div>
+                <div class="results-panel">
+                    <h3>Detection Results</h3>
+                    <div id="results"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mapping" class="mapping-section">
+        <h2>Biodiversity Risk Mapping</h2>
+        <div class="mapping-container">
+            <div class="risk-map-container">
+                <div id="riskMap"></div>
+            </div>
+            <div class="risk-analysis">
+                <h3>Risk Analysis</h3>
+                <div class="risk-metrics">
+                    <div class="metric">
+                        <span class="metric-label">High Risk Areas</span>
+                        <span class="metric-value" id="highRisk">0</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Medium Risk Areas</span>
+                        <span class="metric-value" id="mediumRisk">0</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Low Risk Areas</span>
+                        <span class="metric-value" id="lowRisk">0</span>
+                    </div>
+                </div>
+                <div class="risk-factors">
+                    <h4>Risk Factors</h4>
+                    <ul id="riskFactors"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>About Our Technology</h2>
+        <div class="about-content">
+            <div class="tech-info">
+                <h3>How It Works</h3>
+                <p>Our AI-powered system uses satellite imagery and machine learning algorithms to detect deforestation patterns and assess biodiversity risks in real-time.</p>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-satellite"></i>
+                        <h4>Satellite Monitoring</h4>
+                        <p>Real-time satellite imagery analysis</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-brain"></i>
+                        <h4>AI Analysis</h4>
+                        <p>Advanced machine learning algorithms</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Risk Assessment</h4>
+                        <p>Comprehensive biodiversity risk mapping</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>EcoGuard</h4>
+                <p>Protecting our planet through technology</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#detection">Detection</a></li>
+                    <li><a href="#mapping">Mapping</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EcoGuard. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add loading indicator -->
+    <div id="loading" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+        <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <p>Loading maps...</p>
+        </div>
+    </div>
+
+    <!-- Load scripts in correct order -->
+    <script>
+        // Show loading indicator
+        document.getElementById('loading').style.display = 'block';
+    </script>
+    <!-- Add Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
